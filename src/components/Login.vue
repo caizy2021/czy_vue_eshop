@@ -87,8 +87,8 @@ export default {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return;
         await this.$axios.post("login", this.form).then((res) => {
-          console.log(`加载login...`);
-          console.log(res.data);
+          // console.log(`加载login...`);
+          // console.log(res.data);
 
           // 验证返回信息
           // 失败
@@ -108,7 +108,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .login_container {
-  background-color: cadetblue;
+  background-color: darkgreen;
   height: 100%;
 }
 .login_box {

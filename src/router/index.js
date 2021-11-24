@@ -3,10 +3,13 @@ import VueRouter from 'vue-router'
 
 import Login from '../components/Login.vue'
 import Index from '../components/Index.vue'
+import Welcome from '../components/Welcome.vue'
+import Users from '../components/user/Users.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  // 重定向到/login
   { path:'/', redirect:'/login' },
   {
     path: '/login',
@@ -16,7 +19,13 @@ const routes = [
   {
     path: '/index',
     name: 'Index',
-    component: Index
+    component: Index,
+    // 重定向到/welcome
+    redirect:'/welcome',
+    children:[
+      {path:'/welcome', component:Welcome},
+      {path:'/users', component:Users},
+    ]
   },
 ]
 
