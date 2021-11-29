@@ -34,7 +34,7 @@
         </el-form-item>
         <!-- 按钮 -->
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">登录</el-button>
+          <el-button type="success" @click="login">登录</el-button>
           <el-button type="info" @click="resetLoginFrom">重置</el-button>
         </el-form-item>
       </el-form>
@@ -108,7 +108,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .login_container {
-  background-color: darkgreen;
+  background-color: green;
   height: 100%;
 }
 .login_box {
