@@ -5,6 +5,9 @@ import store from './store'
 // 导入全局样式表
 import '../public/css/global.css'
 
+// 导入插件 vue-table-with-tree-grid
+import TreeTable from 'vue-table-with-tree-grid'
+
 // 配置axios
 import axios from 'axios'
 // 设置axios的默认URL
@@ -28,6 +31,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
+// 注册 vue-table-with-tree-grid
+Vue.component('tree-table', TreeTable)
 
 new Vue({
   router,
