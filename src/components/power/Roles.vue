@@ -259,7 +259,6 @@ export default {
       this.rolesList = res.data;
       // 成功
       this.$message.success("获取角色列表成功！");
-      // console.log(this.rolesList);
     },
 
     // 根据id删除对应权限
@@ -280,7 +279,6 @@ export default {
         return this.$message.info("取消了删除！");
       }
       // 确认
-      // console.log('确认了删除');
       const { data: res } = await this.$axios.delete(
         `roles/${role.id}/rights/${rightId}`
       );
@@ -310,7 +308,6 @@ export default {
       this.$message.success("获取权限数据成功！");
       // 把获取到的权限数据保存到data中
       this.rightsList = res.data;
-      // console.log(this.rightsList);
 
       // 递归获取三级节点的id
       this.getLeafKeys(role, this.defKeys);
@@ -344,7 +341,6 @@ export default {
         ...this.$refs.treeRef.getCheckedKeys(),
         ...this.$refs.treeRef.getHalfCheckedKeys(),
       ];
-      // console.log(keys);
 
       // 转化为字符串，用逗号拼接
       const idStr = keys.join(",");
@@ -370,10 +366,8 @@ export default {
 
     // 展示编辑角色的对话框
     async showEditDialog(id) {
-      // console.log(id);
       // 向后端发送get请求 查询角色信息
       const { data: res } = await this.$axios.get("roles/" + id);
-      // console.log(res);
 
       // 判断请求是否成功
       if (res.meta.status !== 200) {
@@ -384,7 +378,6 @@ export default {
       this.$message.success("查询角色信息成功！");
       // 存储查询到的角色信息
       this.editForm = res.data;
-      // console.log(this.editForm);
 
       // 打开对话框
       this.editlogVisible = true;
@@ -404,7 +397,6 @@ export default {
             roleDesc: this.editForm.roleDesc,
           }
         );
-        // console.log(res);
         // 判断成功与否
         if (res.meta.status !== 200) {
           return this.$message.error("编辑角色信息失败！");
@@ -420,7 +412,6 @@ export default {
 
     // 根据ID删除对应用户数据
     async deleteUserById(id) {
-      // console.log(id);
       // 弹框询问用户是否删除
       const confirmResult = await this.$confirm(
         "此操作将永久删除该角色, 是否继续?",
@@ -434,7 +425,6 @@ export default {
 
       // 如果用户确认删除，则返回值为字符串 confirm
       // 如果用户取消删除，则返回值为字符串 cancel
-      // console.log(confirmResult);
 
       // 判断用户是否删除
       if (confirmResult !== "confirm") {

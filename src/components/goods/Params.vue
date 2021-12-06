@@ -320,7 +320,6 @@ export default {
       }
       // 成功
       this.cateList = res.data;
-      // console.log(this.cateList);
     },
 
     // 级联选择框的选中项变化时，触发这个函数
@@ -330,7 +329,6 @@ export default {
 
     // tab页签点击事件的处理函数
     handleTabClick() {
-      console.log(this.activeName);
       this.getParamsData();
     },
 
@@ -345,7 +343,6 @@ export default {
         return;
       }
       // 证明选中的是三级分类
-      // console.log(this.selectedCateKeys);
       // 根据所选分类的id，和所处的面板，获取对应的参数
       // 向后端发送请求
       const { data: res } = await this.$axios.get(
@@ -368,8 +365,6 @@ export default {
         this.$set(element, "inputVisible", false);
         this.$set(element, "inputValue", "");
       });
-      // 打印返回结果
-      console.log(res.data);
       // 判断数据是动态参数还是静态属性
       if (this.activeName == "many") {
         // 动态参数
@@ -416,11 +411,11 @@ export default {
     },
 
     // 点击按钮，显示编辑对话框
-    async showEditDialog(attr_id) {
+    async showEditDialog(attrId) {
       // 向后端发送请求
       // 查询当前参数的信息
       const { data: res } = await this.$axios.get(
-        `categories/${this.cateId}/attributes/${attr_id}`,
+        `categories/${this.cateId}/attributes/${attrId}`,
         {
           params: { attr_id: this.activeName },
         }
@@ -470,7 +465,7 @@ export default {
     },
 
     // 点击按钮，删除参数信息，根据id对应
-    async deleteParams(attr_id) {
+    async deleteParams(attrId) {
       // 弹框询问用户是否删除
       const confirmResult = await this.$confirm(
         "此操作将永久删除该参数, 是否继续?",
@@ -490,7 +485,7 @@ export default {
       // 删除的业务逻辑
       // 向后端发送请求
       const { data: res } = await this.$axios.delete(
-        `categories/${this.cateId}/attributes/${attr_id}`
+        `categories/${this.cateId}/attributes/${attrId}`
       );
       // 判断请求是否成功
       if (res.meta.status !== 200) {

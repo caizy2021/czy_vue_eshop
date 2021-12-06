@@ -271,11 +271,8 @@ export default {
       }
       // 成功
       this.$message.success(`获取商品分类数据成功！`);
-      // console.log(res);
       this.cateList = res.data.result;
       this.total = res.data.total;
-      // console.log(this.cateList);
-      // console.log(this.total);
     },
 
     // 监听 pagesize 改变的事件
@@ -308,14 +305,11 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error("获取父级分类数据失败！");
       }
-
-      // console.log(res.data);
       this.parentCateList = res.data;
     },
 
     // 选择项发生变化时触发的函数
     parentCateChange() {
-      // console.log(this.selectedKeys);
       // 判断：
       // 如果数组中的length大于0，则证明选中了父级分类；否则，证明没有选中任何父级分类
       if (this.selectedKeys.length > 0) {
@@ -382,14 +376,12 @@ export default {
       this.$message.success("查询分类信息成功！");
       // 存储查询到的用户信息
       this.editForm = res.data;
-      // console.log(this.editForm);
       // 打开对话框
       this.editlogVisible = true;
     },
 
     // 点击确定按钮，编辑选中的分类
     editCateInfo() {
-      // console.log(this.editForm);
       // 预校验
       this.$refs.editFormRef.validate(async (valid) => {
         // 失败则return
@@ -409,13 +401,11 @@ export default {
         this.getCateList();
         // 提示修改成功
         this.$message.success("编辑分类信息成功！");
-        // console.log(res);
       });
     },
 
     // 根据ID删除对应分类数据
     async deleteCateById(id){
-      // console.log(id);
       // 弹框询问用户是否删除
       const confirmResult = await this.$confirm(
         "此操作将永久删除该分类, 是否继续?",
@@ -429,7 +419,6 @@ export default {
 
       // 如果用户确认删除，则返回值为字符串 confirm
       // 如果用户取消删除，则返回值为字符串 cancel
-      // console.log(confirmResult);
 
       // 判断用户是否删除
       if (confirmResult !== "confirm") {

@@ -130,12 +130,9 @@ export default {
       }
       // 成功
       this.$message.success("获取商品列表成功！");
-      // console.log(res.data);
       // 存入数据
       this.goodslist = res.data.goods;
       this.total = res.data.total;
-      console.log(this.goodslist);
-      console.log(this.total);
     },
 
     // 分页大小发生改变时

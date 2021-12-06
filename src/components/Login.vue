@@ -78,7 +78,7 @@ export default {
   methods: {
     // 点击重置按钮，重置登录表单
     resetLoginFrom() {
-      //
+      // 重置表单
       this.$refs.loginFormRef.resetFields();
     },
 
@@ -87,9 +87,6 @@ export default {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return;
         await this.$axios.post("login", this.form).then((res) => {
-          // console.log(`加载login...`);
-          // console.log(res.data);
-
           // 验证返回信息
           // 失败
           if (res.data.meta.status !== 200)

@@ -43,7 +43,7 @@
         </el-table-column>
         <el-table-column label="操作">
           <!-- 作用域插槽 -->
-          <template slot-scope="">
+          <template>
             <el-button
               type="primary"
               icon="el-icon-edit"
@@ -202,7 +202,6 @@ export default {
         return this.$message.error(`获取订单列表失败！`);
       }
       // 成功
-      console.log(res);
       this.total = res.data.total;
       this.orderList = res.data.goods;
     },
@@ -241,7 +240,6 @@ export default {
       this.progressInfo = res.data;
       // 显示对话框
       this.progressDialogVisible = true;
-      console.log(this.progressInfo);
     },
   },
 };

@@ -252,7 +252,6 @@ export default {
       // 成功
       // 保存数据
       this.cateList = res.data;
-      console.log(this.cateList);
     },
 
     // 级联选择器的选中项变化时，触发这个函数
@@ -300,7 +299,6 @@ export default {
           element.attr_vals =
             element.attr_vals.length == 0 ? [] : element.attr_vals.split(" ");
         });
-        console.log(this.manyTableData);
       }
       // 判断访问的是静态属性面板，索引为2
       else if (this.activeIndex == "2") {
@@ -316,37 +314,31 @@ export default {
         }
         // 成功
         this.onlyTableData = res.data;
-        console.log(this.onlyTableData);
       }
     },
 
     // 处理图片预览效果的方法
     handlePreview(file) {
-      console.log(file);
       this.previewURL = file.response.data.url;
       this.previewDialogVisible = true;
     },
 
     // 处理移除图片操作的方法
     handleRemove(file) {
-      console.log(file);
       // 1.获取将要删除的图片的临时路径
       const filePath = file.response.data.tmp_path;
       // 2.从pic数组中，找到这个图片对应的索引值
       const i = this.addForm.pics.findIndex((x) => x.pic === filePath);
       // 3.调用数组的splice方法，把图片信息对象，从pics数组中移除
       this.addForm.pics.splice(i, 1);
-      console.log(this.addForm);
     },
 
     // 监听图片上传成功的事件
     handleSuccess(response) {
-      console.log(response);
       // 1.拼接得到一个图片信息对象
       const picInfo = { pic: response.data.tmp_path };
       // 2.将图片信息对象，push到pics数组中
       this.addForm.pics.push(picInfo);
-      console.log(this.addForm.pics);
     },
 
     // 点击按钮，添加商品
@@ -388,7 +380,6 @@ export default {
         });
         // 2.3.数据添加到form中
         form.attrs = this.addForm.attrs;
-        console.log(form);
 
         // 向后端发送请求，发起请求添加商品
         // 商品的名称，必须是唯一的

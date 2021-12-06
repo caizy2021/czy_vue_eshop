@@ -360,30 +360,25 @@ export default {
         return this.$message.error("获取用户列表失败");
       this.userlist = res.data.users;
       this.total = res.data.total;
-      // console.log(res);
     },
 
     // 监听pagesize改变的事件
     handleSizeChange(newSize) {
-      // console.log(newSize);
       this.queryInfo.pagesize = newSize;
       this.getUserList();
     },
 
     // 监听页码值改变的事件
     handleCurrentChange(newPage) {
-      // console.log(newPage);
       this.queryInfo.pagenum = newPage;
       this.getUserList();
     },
 
     // 监听switch开关的状态变化
     async userStateChanged(userinfo) {
-      // console.log(userinfo);
       const { data: res } = await this.$axios.put(
         `/users/${userinfo.id}/state/${userinfo.mg_state}`
       );
-      // console.log(res);
       if (res.meta.status != 200) {
         userinfo.mg_state = !userInfo.mg_state;
         return this.$message.error("更新用户状态失败！");
@@ -473,7 +468,6 @@ export default {
 
     // 根据ID删除对应用户数据
     async deleteUserById(id) {
-      // console.log(id);
       // 弹框询问用户是否删除
       const confirmResult = await this.$confirm(
         "此操作将永久删除该用户, 是否继续?",
@@ -487,7 +481,6 @@ export default {
 
       // 如果用户确认删除，则返回值为字符串 confirm
       // 如果用户取消删除，则返回值为字符串 cancel
-      // console.log(confirmResult);
 
       // 判断用户是否删除
       if (confirmResult !== "confirm") {
@@ -520,8 +513,6 @@ export default {
       // 成功
       this.$message.success("获取用户列表成功！");
       this.rolesList = res.data;
-      // console.log(res);
-
       this.setRoleDialogVisible = true;
     },
 
