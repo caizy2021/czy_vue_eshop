@@ -18,7 +18,7 @@ import NProgress from 'nprogress'
 // 配置axios
 import axios from 'axios'
 // 设置axios的默认URL
-axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
+axios.defaults.baseURL = 'http://119.23.174.181:8888/api/private/v1/'
 // axios请求拦截器
 // 在 request 拦截器中，显示进度条 NProgress.start()
 axios.interceptors.request.use(config=>{
